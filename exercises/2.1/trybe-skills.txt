@@ -5,3 +5,5 @@ O que vou aprender na Trybe:
 - JavaScript
 - Flexbox
 - DOM
+- HTML
+- CSS
