@@ -1,0 +1,15 @@
+h1, p {
+  text-align: center;
+}
+a {
+  text-decoration: none;
+}
+ol,ul {
+  list-style-type: none;
+}
+li:hover {
+  background-color: #BB2020;
+}
+li:active {
+  color: #fff;
+}
