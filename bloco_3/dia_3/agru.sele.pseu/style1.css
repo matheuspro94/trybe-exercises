@@ -1,0 +1,31 @@
+div:hover {
+  border: 4px solid #BB2020;
+}
+h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2em;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-align: center;
+}
+.azul {
+  background-color: blue;
+}
+.vermelho {
+  background-color: red;
+}
+.amarelo {
+  background-color: yellow;
+}
+.marrom{
+  background-color: brown;
+}
+.verde {
+  background-color: greenyellow;
+}
+.maior {
+  font-size: 2.5em;
+}
+.impar {
+  font-style: italic;
+}

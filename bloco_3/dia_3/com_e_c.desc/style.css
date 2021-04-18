@@ -1,0 +1,30 @@
+ol li {
+  font-weight: bold;
+  background-color: yellow;
+}
+li {
+  font-size: 20px;
+}
+h1, h2 {
+  color: red;
+}
+.italic {
+  font-size: 40px;
+  border: 1px solid black;
+} 
+.par {
+  color: green;
+}
+.impar {
+  text-transform: uppercase;
+}
+.azul {
+  color: blue;
+}
+.rosa {
+  background-color: pink;
+}
+ul.aliados li a:hover {
+  font-weight: bold;
+  color: red;
+}
