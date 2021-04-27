@@ -1,4 +1,9 @@
 //Agora inverta o lado do triângulo. Por exemplo:
+// 1- Começa sempre com um asterisco no centro e a quantidade de espaços é n - 1;
+// 2- Espaço do lado esquerdo (n - 1) / 2 espaços do lado direito (n - 1) / 2;
+// 3- Aumentar o número de asterisco em 2, e diminui o número de espaço em 1 para cada lado;
+// 4- Condição de parada será quando a quantidade de asteriscos for igual a n;
+
 let n = 5;
 let symbol = '*';
 let inputLine = '';
