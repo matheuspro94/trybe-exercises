@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Exercício 5.2 - js</title>
+    <title>Exercício 5.2</title>
     <style>
       div {
         border-color: black;
@@ -57,7 +57,32 @@
   </head>
   <body>
     <script>
-      // COLOQUE SEU CÓDIGO AQUI
+    
+      // 1. Adicione a tag h1 com o texto Exercício 5.2 - JavaScript DOM como filho da tag body ;
+      let fistTitle = document.createElement('h1');
+      fistTitle.innerHTML = 'Exercício 5.2 - JavaScript DOM';
+      document.body.appendChild(fistTitle);
+
+      // 2. Adicione a tag div com a classe main-content como filho da tag body ;
+      let div = document.createElement('div');
+      div.className = 'main-content';
+      document.body.appendChild(div);
+
+      // 3. Adicione a tag div com a classe center-content como filho da tag div criada no passo 2;
+     let divChild = document.createElement('div');
+     divChild.className = 'main-content';
+     document.body.appendChild(divChild);
+
+    //  4. Adicione a tag p como filho do div criado no passo 3 e coloque algum texto;
+    let divParagraph = document.createElement('p');
+    divParagraph.innerHTML = 'Aprender JavaScript não é facil';
+    divChild.appendChild(divParagraph);
+
+    // 5. Adicione a tag div com a classe left-content como filho da tag div criada no passo 2;
+    let divAddClass = document.createElement('div');
+    divAddClass.className = 'left-content';
+    divChild.appendChild(divAddClass)
+    
     </script>
   </body>
 </html>
