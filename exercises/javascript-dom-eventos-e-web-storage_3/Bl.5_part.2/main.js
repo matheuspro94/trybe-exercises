@@ -4,7 +4,7 @@ const divTres = document.getElementById('divTres');
 const input = document.getElementById('input');
 const myWebpage = document.getElementById('mySpotrybefy');
 
-// 01
+// 02
 function handleChangeTech(event) {
   const techElement = document.querySelector('.tech');
   techElement.classList.remove('tech');
@@ -16,16 +16,25 @@ divUm.addEventListener('click', handleChangeTech);
 divDois.addEventListener('click', handleChangeTech);
 divTres.addEventListener('click', handleChangeTech);
 
-// 02
+// 03
 input.addEventListener('input', (event) => {
   const techElement = document.querySelector('.tech');
   techElement.innerText = event.target.value;
 });
-// 03 
+// 04 
 
 myWebpage.addEventListener('dblclick', () => {
   window.location.replace('https://www.linkedin.com/in/matheus-proen%C3%A7a-61733120b/')
 });
+// 05
+
+myWebpage.addEventListener('mouseover', (event) => {
+  event.target.style.color = 'red';
+})
+
+myWebpage.addEventListener('mouseout', (event) => {
+  event.target.style.color = 'unset'
+})
 /*
  Copie esse arquivo e edite apenas ele;
  Crie uma função que adicione a classe 'tech' ao elemento selecionado;
