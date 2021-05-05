@@ -85,7 +85,105 @@ function createButtonFriday(buttonName){
 }
 createButtonHoliday('Sexta-feira');
 
+// Exercício 5:
 
+// function createSpotlightFridayDay(fridaysArray) {
+//   let getFridayButton = document.querySelector('#btn-friday');
+//   let getfriday = document.getElementsByClassName('friday-day');
+//   // let textOrigin = getfriday;
+//   let setNewText = 'SEXTOU!!!';
 
+//   getFridayButton.addEventListener('click', function() {
+//     for (let index = 0; index < getfriday.length; index += 1) {    
+//       if(getfriday[index] !== setNewText) {
+//         getfriday[index].innerHTML = setNewText;
+//       } else {
+//         getfriday[index].innerHTML = fridaysArray[index];
+//       }
+//     }
+//   })
+// };
+// let dayFridays = [4, 11, 18 , 25];
+// createSpotlightFridayDay(dayFridays);
 
+function displayFridays(fridaysArray) {
+  const getFridayButton = document.getElementById('btn-friday');
+  const fridays = document.querySelectorAll('friday');
+  const newFridayText = 'SEXTOU o/';
 
+  getFridayButton.addEventListener('click', function() {
+  for (let index = 0; index < fridays.length; index += 1) {
+    if (fridays[index].innerHTML !== newFridayText) {
+        fridays[index].innerHTML = newFridayText;
+    } else {
+        fridays[index].innerHTML = fridaysArray[index];
+      };
+    };
+  });
+};
+
+let dezFridays = [ 4, 11, 18, 25 ];
+displayFridays(dezFridays);
+
+// Exercício 6:
+
+function dayMouseOver() {
+  let days = document.querySelector('#days');
+  
+  days.addEventListener('mouseover', function(event) {
+    event.target.style.fontSize = '30px';
+    event.target.style.fontWeigth = '600';
+  })
+}
+
+function dayMouseOut() {
+  let day = document.querySelector('#days');
+  days.addEventListener('mouseout', function(event) {
+    event.target.style.fontWeigth = '200';
+    event.target.style.fontSize = '20px';
+  })
+} 
+
+dayMouseOver()
+dayMouseOut();
+
+// Exercício 7:
+
+function newTaskSpan(task) {
+  let TasksContainer = document.querySelector('.my-tasks');
+  let createTaskName = document.createElement('span');
+
+  createTaskName.innerHTML = task;
+  TasksContainer.appendChild(createTaskName);
+};
+
+newTaskSpan('Cozinhar');
+
+// Exercício 8
+
+function newTaskDiv(color) {
+  let TasksContainer = document.querySelector('.my-tasks');
+  let newTask = document.createElement('div');
+
+  newTask.className = 'task';
+  newTask.style.backgroundColor = color;
+  TasksContainer.appendChild(newTask)
+}
+newTaskDiv('green');
+
+// Exercício 9
+
+function setTaskClass() {
+  let selectedTask = document.getElementsByClassName('task selected');
+  let myTasks = document.querySelector('.task');
+
+  myTasks.addEventListener('click', function(event) {
+    if (selectedTask.length === 0) {
+      event.target.className = 'task selected';
+    } else {
+      event.target.className = 'task';
+    }
+  });
+};
+
+setTaskClass()
