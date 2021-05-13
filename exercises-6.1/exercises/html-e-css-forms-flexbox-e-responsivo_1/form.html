@@ -16,23 +16,23 @@
   </header>
   <div class="container fundo">
   <fieldset>
-    <form action="" method="GET">
+    <form action="" method="GET" class="js-form">
       <p class="h5">Dados:</p>
     <div>
      <label class="form-label" for="nomeCompleto">Nome:</label>
-     <input class="form-control" type="text" name="nome" id="nomeCompleto" required>
+     <input class="form-control" type="text" name="nome" id="nomeCompleto"  placeholder="Nome completo" required>
     </div>
     <div>
       <label class="form-label" for="email">Email:</label>
-      <input class="form-control" type="text" name="email" id="email" required>
+      <input class="form-control" type="text" name="email" id="email" placeholder="Digite seu email" required>
     </div>
      <div>
       <label class="form-label" for="cpf">CPF:</label>
-      <input class="form-control" type="text" name="cpf" id="cpf" required>
+      <input class="form-control" type="text" name="cpf" id="cpf" placeholder="000.000.000-00" required>
      </div>
     <div>
       <label class="form-label" for="endereco">Endereço:</label>
-      <input class="form-control" type="text" name="endereco" id="endereco" required>
+      <input class="form-control" type="text" name="endereco" id="endereco" placeholder="Endereço" required>
     </div>
     <div>
       <select class="form-select" name="estado-escolido" id="estado">
@@ -41,9 +41,9 @@
     <div>
       <p class="h5">Tipo de Moradia:</p>
       <label class="form-label" for="casa">Casa</label>
-      <input type="radio" name="moradia" id="casa" checked>
+      <input class="form-check-input" type="radio" name="moradia" id="casa" checked>
       <label for="apart">Apartamento</label>
-      <input type="radio" name="moradia" id="apart">
+      <input class="form-check-input" type="radio" name="moradia" id="apart">
     </div>
   </fieldset>
   <fieldset>
@@ -54,19 +54,19 @@
     </div>
     <div>
       <label class="form-label" for="cargo">Cargo:</label>
-      <input class="form-control" type="text" name="cargo" id="cargo" required>
+      <input class="form-control" type="text" name="cargo" id="cargo" placeholder="Cargo" required>
     </div>
     <div>
       <label class="form-label" for="descricao-cargo">Descrição do cargo:</label>
-      <input class="form-control" type="text" name="des-cargo" id="descricao-cargo" required>
+      <input class="form-control" type="text" name="des-cargo" id="descricao-cargo" placeholder="Descrição do cargo" required>
     </div>
     <div>
       <label class="form-label" for="data-inicial">Data de início:</label>
-      <input class="form-control" type="text" name="data-inicial" id="data-inicial" required>
+      <input class="form-control input-medio" autocomplete="off" data-validate-field="date" type="text" name="data-inicial" id="data-inicial" placeholder="DD/MM/AAAA" required>
     </div>
     <div>
       <button class="btn btn-outline-success" type="submit" id="enviar">Enviar</button>
-      <button class="btn btn-outline-danger">Limpar</button>
+      <button class="btn btn-outline-danger clear-button">Limpar</button>
     </div> 
   </div> 
    </form> 
