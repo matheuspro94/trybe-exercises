@@ -4,59 +4,73 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="bootstrap-5.0.0-dist/css/bootstrap.min.css">
+  <script src="jquery-3.6.0.min.js"></script>
+  <script src="bootstrap-5.0.0-dist/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="styles.css">
   <title>Formulário de Currículo</title>
 </head>
 <body>
-  <fieldset>Formulário de Currículo
-    <br>
+  <header class="container text-center">
+    <h1 class="display-2">Formulário de Currículo</h1>
+  </header>
+  <div class="container fundo">
+  <fieldset>
     <form action="" method="GET">
-      <br>
-     <label for="nomeCompleto">Nome:</label>
-     <input type="text" name="nome" id="nomeCompleto" required>
-     <br>
-     <label for="email">Email:</label>
-     <input type="text" name="email" id="email" required>
-     <br>
-     <label for="cpf">CPF:</label>
-     <input type="text" name="cpf" id="cpf" required>
-     <br>
-     <label for="endereco">Endereço:</label>
-     <input type="text" name="endereco" id="endereco" required>
-     <br>
-     <select name="estado-escolido" id="estado">
-     </select>
-     <br>
-     <p>Tipo de Moradia</p>
-     <label for="casa">Casa</label>
-     <input type="radio" name="moradia" id="casa" checked>
-     <label for="apart">Apartamento</label>
-     <input type="radio" name="moradia" id="apart">
-     <br>
-     <br>
+      <p class="h5">Dados:</p>
+    <div>
+     <label class="form-label" for="nomeCompleto">Nome:</label>
+     <input class="form-control" type="text" name="nome" id="nomeCompleto" required>
+    </div>
+    <div>
+      <label class="form-label" for="email">Email:</label>
+      <input class="form-control" type="text" name="email" id="email" required>
+    </div>
+     <div>
+      <label class="form-label" for="cpf">CPF:</label>
+      <input class="form-control" type="text" name="cpf" id="cpf" required>
+     </div>
+    <div>
+      <label class="form-label" for="endereco">Endereço:</label>
+      <input class="form-control" type="text" name="endereco" id="endereco" required>
+    </div>
+    <div>
+      <select class="form-select" name="estado-escolido" id="estado">
+      </select>
+    </div>
+    <div>
+      <p class="h5">Tipo de Moradia:</p>
+      <label class="form-label" for="casa">Casa</label>
+      <input type="radio" name="moradia" id="casa" checked>
+      <label for="apart">Apartamento</label>
+      <input type="radio" name="moradia" id="apart">
+    </div>
   </fieldset>
-  <br>
-  <fieldset>Ùltimo Emprego
-    <br>
-    <label for="res-cur">Resumo do currículo</label>
-    <textarea name="resumo-curriculo" id="res-cur" cols="30" rows="10"></textarea>
-    <br>
-    <label for="cargo">Cargo:</label>
-    <input type="text" name="cargo" id="cargo" required>
-    <br>
-    <label for="descricao-cargo">Descrição do cargo:</label>
-    <input type="text" name="des-cargo" id="descricao-cargo" required>
-    <br>
-    <label for="data-inicial">Data de início:</label>
-    <input type="date" name="data-inicial" id="data-inicial" required>
-    <br>
+  <fieldset>
+     <p class="h5">Ùltimo Emprego:</p>
+    <div>
+      <label class="form-label" for="res-cur">Resumo do currículo</label>
+      <textarea class="form-control" name="resumo-curriculo" id="res-cur" cols="30" rows="10"></textarea>
+    </div>
+    <div>
+      <label class="form-label" for="cargo">Cargo:</label>
+      <input class="form-control" type="text" name="cargo" id="cargo" required>
+    </div>
+    <div>
+      <label class="form-label" for="descricao-cargo">Descrição do cargo:</label>
+      <input class="form-control" type="text" name="des-cargo" id="descricao-cargo" required>
+    </div>
+    <div>
+      <label class="form-label" for="data-inicial">Data de início:</label>
+      <input class="form-control" type="text" name="data-inicial" id="data-inicial" required>
+    </div>
+    <div>
+      <button class="btn btn-outline-success" type="submit" id="enviar">Enviar</button>
+      <button class="btn btn-outline-danger">Limpar</button>
+    </div> 
+  </div> 
+   </form> 
   </fieldset>
-  <br>
-     <button type="submit" id="enviar">Enviar</button>
-     <br>
-     <br>
-     <button>Limpar</button>
-    </form>  
 </body>
 <script src="./script.js"></script>
 </html>

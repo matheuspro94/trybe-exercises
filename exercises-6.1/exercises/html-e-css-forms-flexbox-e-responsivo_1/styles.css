@@ -1,0 +1,26 @@
+body {
+  max-width: 80%;
+  width: 100%;
+  margin: 40px auto;
+  background-color: antiquewhite;
+}
+
+header {
+  border: 2px solid maroon;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+div {
+  padding-bottom: 10px;
+}
+.form-select {
+  width: 40%;
+}
+.fundo {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: whitesmoke;
+  box-shadow: 1px 1px 1px 1px black;
+}
+
