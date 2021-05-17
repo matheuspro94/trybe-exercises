@@ -36,7 +36,6 @@ p {
 
   }
 
-
   .container {
     flex-direction: column;
   }
@@ -56,6 +55,11 @@ p {
   
   .container {
     flex-wrap: wrap;
+  }
+
+  p {
+    padding: 0 5px;
+    line-height: 1.5em;
   }
 }
 
@@ -78,4 +82,5 @@ p {
   .aside-one, .aside-two {
     padding: 0 20px;
   }
+  
 }
