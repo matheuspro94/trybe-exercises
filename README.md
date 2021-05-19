@@ -1,1 +1,1 @@
-Exercicios do bloco 6.5 Trybe
+Exercicios do bloco 7.1 Trybe
