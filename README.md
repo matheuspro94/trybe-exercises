@@ -1,1 +1,1 @@
-Exercicios do bloco 8.2 Trybe
+Exercicios do bloco 8.3 Trybe
