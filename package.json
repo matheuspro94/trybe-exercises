@@ -1,22 +1,14 @@
 {
-  "name": "trybe-exercises",
+  "name": "meuApp",
   "version": "1.0.0",
-  "description": "Bloco 10.1 Primeiros passos no Jest Próximo",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mroenca40/trybe-exercises.git"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mroenca40/trybe-exercises/issues"
-  },
-  "homepage": "https://github.com/mroenca40/trybe-exercises#readme",
   "devDependencies": {
     "jest": "^27.0.4"
   }
