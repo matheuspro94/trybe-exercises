@@ -3,5 +3,7 @@ O que vou aprender na Trybe:
 - Bash
 - Git
 - JavaScript
+- Flexbox
+- DOM
 - HTML
 - CSS
