@@ -1,19 +1,15 @@
 import React from 'react';
 import './App.css';
+import pokemons from './data';
+import Pokedex from './Pokedex';
 
-const Task = (value) => {
+function App() {
   return (
-    <li>{value}</li>
+    <div className="App">
+      <h1> Pokedex </h1>
+      <Pokedex pokemons={pokemons} />
+    </div>
   );
-}
-const tarefas = ['Tomar café', 'Inglês', 'Origamid', 'Revisar Matéria'];
-
-class App extends React.Component {
-  render() {
-    return (
-      <ul>{tarefas.map(tarefa => Task(tarefa))}</ul>
-    );
-  }
 }
 
 export default App;
