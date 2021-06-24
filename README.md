@@ -1,1 +1,1 @@
-Olá seja bem vindo ao repositorio de exercios do Matheus Proença aluno da trybe.
+Olá seja bem vindo ao repositorio de exercicios do Matheus Proença aluno da trybe.
