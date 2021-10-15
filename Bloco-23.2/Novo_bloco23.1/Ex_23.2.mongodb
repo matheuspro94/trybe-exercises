@@ -3,112 +3,166 @@ db.movies.find();
 
 // Exercicio 01
 db.movies.updateOne(
-  { title: "Batman"},
-  { $set:{ imdbRating: 7.7 } }
+  { title: "Batman" },
+  {
+    $push: {
+      category:"superhero",
+    }
+  }
 );
 
 // Exercicio 02
 db.movies.updateOne(
-  { title: "Godzilla"},
-  { $set:{ budget: 1 } }
+  { title: "Batman" },
+  {
+    $push: {
+      category: 
+        { $each: ["villain", "comic-based"] 
+      },
+    },
+  },
 );
 
 // Exercicio 03
 db.movies.updateOne(
-  { title: "Home Alone"},
-  { $set:{ budget: 15, imdbRating: 5.5 } }
+  { title: "Batman" },
+  { $pop: { category: -1 } },
 );
 
 // Exercicio 04
 db.movies.updateOne(
-  { title: "Batman"},
-  { $inc:{ imdbRating: 2 } }
+  { title: "Batman" },
+  { $pull: { category: "adventure" } },
 );
 
 // Exercicio 05
 db.movies.updateOne(
-  { title: "Home Alone"},
-  { $inc:{ budget: 5 } }
+  { title: "Batman" },
+  { $pop: { category: 1 } },
 );
 
 // Exercicio 06
 db.movies.updateOne(
-  { title: "Batman"},
-  { $mul:{ imdbRating: 4 } }
-);
-
-// Exercicio 07
-db.movies.updateOne(
-  { title: "Batman"},
-  { $rename: {
-    "budget": "estimatedBudget"
+  { title: "Batman" },
+  {
+    $push: {
+      category:"action",
     }
   }
 );
 
+// Exercicio 07
+db.movies.updateMany(
+  {
+    title: {
+      $in: ["Batman", "Home Alone"],
+    },
+  },
+  {
+    $push: { category: "90's" },
+  },
+);
+
 // Exercicio 08
-db.movies.updateOne(
-  { title: "Home Alone"},
-  { $min: { budget: 5 } }
+db.movies.updateMany(
+  { title: "Home Alone" },
+  {
+    $push: {
+      cast: {
+        $each: [
+          {
+            "actor": "Macaulay Culkin",
+            "character": "Kevin"
+          },
+          {
+            "actor": "Joe Pesci",
+            "character": "Harry"
+          },
+          {
+            "actor": "Daniel Stern"
+          }
+        ]
+      },
+    },
+  },
 );
 
 // Exercicio 09
 db.movies.updateOne(
-  { title: "Godzilla"},
-  { 
-    $max: { imdbRating: 8.6 },
-    $set: { "category.1": "thriller" },
-  }
+  {
+    title: "Home Alone",
+    "cast.actor": "Daniel Stern",
+  },
+  {
+    $set: { "cast.$.character": "Marv" },
+  },
 );
 
 // Exercicio 10
+db.movies.updateMany(
+  { title: "Batman" },
+  {
+    $push: {
+      cast: {
+        $each: [
+          {
+            "character": "Batman"
+          },
+          {
+            "character": "Alfred"
+          },
+          {
+            "character": "Coringa"
+          }
+        ]
+      },
+    },
+  },
+);
+
+// Exercicio 11
 db.movies.updateOne(
-  { title: "Home Alone"},
   { 
-    $currentDate: {
-      lastUpfated: { $type: "timestamp" }
-    }
+    title: "Batman",
+    "cast.character": "Batman"
+  },
+  {
+    $push: { "cast.$.actor": "Christian Bale" }
   }
 );
 
 db.movies.updateOne(
-  { title: "Home Alone"},
-  { $rename: {
-    "lastUpfated": "lastUpdated"
-    }
+  { 
+    title: "Batman",
+    "cast.character": "Alfred"
+  },
+  {
+    $push: { "cast.$.actor": "Michael Caine" }
+  }
+);
+
+db.movies.updateOne(
+  { 
+    title: "Batman",
+    "cast.character": "Coringa"
+  },
+  {
+    $push: { "cast.$.actor": "Heath Ledger" }
   }
 );
 
 // Exercicio 11
-db.movies.updateMany(
-  {},
-  { 
-    $set: { sequels: 0 }
-  }
-);
-
-// Exercicio 12
-db.movies.updateMany(
-  {},
-  { 
-    $unset: {
-      budget:"",
-      estimatedBudget:""
-    }
-  }
-);
-
-// Exercicio 13
-db.movies.updateMany(
+db.movies.updateOne(
   {
-$or: [
-      { title: "Batman" },
-      { title: "Home Alone" },
-    ],
+    title: "Batman",
+    "cast.character": "Batman",
   },
   {
-$max: {
-      imdbRating: 17,
+    $push: {
+      "cast.$.actor": {
+        $each: ["Michael Keaton", "Val Kilmer", "George Clooney"],
+        $sort: 1,
+      },
     },
   },
 );
