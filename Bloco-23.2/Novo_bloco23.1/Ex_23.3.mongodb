@@ -1,0 +1,143 @@
+use class;
+db.movies.find();
+
+db.movies.drop();
+db.movies.insertMany([
+  {
+    title: "Batman",
+    category: [
+      "action",
+      "adventure"
+    ],
+    imdbRating: 7.7,
+    budget: 35
+  },
+  {
+    title: "Godzilla",
+    category: [
+      "action",
+      "adventure",
+      "sci-fi"
+    ],
+    imdbRating: 6.6,
+    budget: 10
+  },
+  {
+    title: "Home Alone",
+    category: [
+      "family",
+      "comedy"
+    ],
+    imdbRating: 7.4
+  }
+]);
+
+// Exercicio 01
+db.movies.find(
+  { category: {
+      $all:[
+        "action",
+        "adventure",
+      ]
+    },
+  },
+);
+
+// Exercicio 02
+db.movies.find(
+  { category: {
+      $all:[
+        "action",
+      ]
+    },
+    imdbRating: { $gt: 7 }
+  },
+);
+
+// Exercicio 03
+db.movies.updateOne(
+  { title: "Batman" },
+  { $push: { ratings: { $each: [85, 100, 102, 105] } } }
+);
+
+// Exercicio 04
+db.movies.updateOne(
+  { title: "Godzilla" },
+  { $push: { ratings: { $each: [78, 52, 95, 102] } } }
+);
+
+db.movies.updateOne(
+  {
+    title: "Godzilla",
+  },
+  {
+    $set: {
+      "ratings": [],
+    },
+  },
+);
+
+// Exercicio 05
+db.movies.updateOne(
+  { title: "Home Alone" },
+  { $push: { ratings: { $each: [200, 99, 65] } } }
+);
+
+// Exercicio 06
+db.movies.find(
+  { 
+   ratings: {
+     $elemMatch: { $gt: 103 }
+   }
+  },
+  { 
+    _id: 0,
+    title: true,
+    ratings: true, 
+  }
+);
+
+// Exercicio 07
+db.movies.find(
+  { 
+   ratings: {
+     $elemMatch: { $gte: 100, $lte:105 }
+   }
+  },
+  { 
+    _id: 0,
+    title: true,
+    ratings: true, 
+  }
+);
+
+// Exercicio 08
+db.movies.find(
+  { 
+   ratings: {
+     $elemMatch: { $gte: 64, $lte:105, $mod: [9,0] }
+   }
+  },
+  { 
+    _id: 0,
+    title: true,
+    ratings: true, 
+  }
+);
+
+// Exercicio 09
+db.movies.find(
+  { 
+   ratings: {
+     $elemMatch: { $gt: 103 }
+  },
+    category: { $all: ["adventure"] }
+  },
+  { 
+    _id: 0,
+    title: true,
+    ratings: true,
+    category: true,
+  }
+);
+
