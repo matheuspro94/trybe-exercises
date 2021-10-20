@@ -1,0 +1,53 @@
+use("livros");
+db.books.find();
+
+db.books.aggregate(
+  [
+    {
+      $project: {
+        _id: 0,
+        title: 1,
+        author: 1,
+      }
+    }
+  ]
+);
+
+use("livros");
+db.books.aggregate(
+  [
+    {
+      $project: {
+        copies: 0,
+      }
+    }
+  ]
+);
+
+use("livros");
+db.books.aggregate([
+  {
+    $project : {
+      "author.first": 0,
+      copies: 0
+    }
+  }
+]);
+
+use("livros");
+db.books.aggregate([
+  {
+    $project: {
+      title: 1,
+      isbn: {
+        prefix: { $substr: ["$isbn", 0, 3] },
+        group: { $substr: ["$isbn", 3, 2] },
+        publisher: { $substr: ["$isbn", 5, 4] },
+        title: { $substr: ["$isbn", 9, 3] },
+        checkDigit: { $substr: ["$isbn", 12, 1] }
+      },
+      lastName: "$author.last",
+      copiesSold: "$copies"
+    }
+  }
+]);

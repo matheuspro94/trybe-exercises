@@ -1,0 +1,64 @@
+use("sales");
+db.sales.find();
+
+use("sales");
+db.sales.aggregate(
+  [
+    {
+      $group: {
+        _id: null,
+        count: {
+          $sum: 1,
+        }
+      }
+    }
+  ]
+);
+
+use("sales");
+db.sales.aggregate(
+  [
+    {
+      $group: {
+        _id: "$item",
+        count: { $sum: 1 }
+      }
+    }
+  ]
+);
+
+use("sales");
+db.sales.aggregate(
+  [
+    {
+      $group: {
+        _id: "$item",
+        totalSalesAmount: {
+          $sum: {
+            $multiply: ["$price", "$quantity"],
+          }
+        }
+      }
+    },
+    { 
+      $match: { totalSalesAmount : { $gte: 100} },
+    },
+    {
+      $sort: { totalSalesAmount: 1 }
+    }
+  ]
+);
+
+use("sales");
+db.sales.aggregate([
+  {
+    $group : {
+      _id : null,
+      totalSaleAmount: {
+        $sum: { $multiply: ["$price", "$quantity"] }
+      },
+      averageQuantity: { $avg: "$quantity" },
+      count: { $sum: 1 }
+    }
+  }
+]);
