@@ -1,55 +1,44 @@
 const connection = require('./connection');
+const { ObjectId } = require('mongodb');
 const Author = require('./Author');
 
 const getAll = async () => {
-  const [book] = await connection.execute('SELECT * FROM books');
-  return book.map(({ id, title, author_id }) => ({
-    id,
-    title,
-    authorId: author_id,
-  }));
+  return connection()
+    .then((db) => db.collection('books').find({}).toArray())
+    .then((book) => 
+    book.map(({ _id, title, author_id }) => ({
+      id: _id,
+      title,
+      authorId: author_id,
+    }))
+  );
 }
 
-const getByBookId = async (authorId) => {
-  const query = 'SELECT * FROM model_example.books WHERE author_id=?;'
-  const [books] = await connection.execute(query, [authorId]);
-
-  return books.map(({ id, title, author_id }) => ({
-    id,
-    title,
-    authorId: author_id,
-  }));
-};
+const getByAuthorId = (authorId) => connection() // id dos livros
+  .then((db) => db.collection('books').find({ author_id: Number(authorId) }).toArray());
 
 const findById = async (id) => {
-  const [books] = await connection.execute('SELECT * FROM model_example.books WHERE id=?;', 
-  [id]
-  );
+  const book = await connection()
+    .then((db) => db.collection('books').findOne(new ObjectId(id)));
 
-  if (books.length === 0) return null;
+  if (!book) return null;
 
-  return books.map(({id, title, author_id}) => ({
-    id,
-    title,
-    authorId: author_id,
-  }))[0];
+  return book;
 }
 
-const isValid = async (title, authorId) => {
-  if (!title || typeof title !== 'string' || title.length < 3) return false;
-  if (!authorId || typeof authorId !== 'number' || !(await Author.findById(authorId))) return false;
+const isValid = async (title, authorId) => { // aqui tinha que passar id do mongoDB
+  if (!title || typeof title !== 'string') return false;
+  if (!authorId || typeof authorId !== 'string' || authorId.length !== 24 || !(await Author.findById(authorId))) return false;
 
   return true;
 }
 
-const create = async (title, authorId) => connection.execute(
-  'INSERT INTO model_example.books (title, author_id) VALUES (?,?)',
-  [title, authorId],
-);
+const create = async (title, author_id) => connection() //resolver
+  .then((db) => db.collection('books').insertOne({ title, author_id }));
 
 module.exports = {
   getAll,
-  getByBookId,
+  getByAuthorId,
   findById,
   isValid,
   create
