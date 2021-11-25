@@ -1,39 +1,28 @@
 const connection = require('./connection');
 const { ObjectId } = require('mongodb');
 
-const getNewAuthor = ({id, firstName, middleName, lastName}) => {
-  const fullName = [firstName, middleName, lastName].filter((name) => name).join(" "); 
-  return {
-    id,
-    firstName,
-    middleName,
-    lastName,
-    fullName
-  }
-}
-
-const serialize = (authorData) => {
-  return {
-    id: authorData.id,
-    firstName: authorData.first_name,
-    middleName: authorData.middle_name,
-    lastName: authorData.last_name,
-  }
-}
+// const serialize = (authorData) => {
+//   return {
+//     id: authorData.id,
+//     firstName: authorData.first_name,
+//     middleName: authorData.middle_name,
+//     lastName: authorData.last_name,
+//   }
+// }
 
 const getAll = async () => {
   return connection()
-      .then((db) => db.collection('authors').find().toArray())
-          .then((authors) =>
-              authors.map(({ _id, firstName, middleName, lastName }) =>
-              getNewAuthor({
-                  id: _id,
-                  firstName,
-                  middleName,
-                  lastName,
-              })
-          )
-      );
+  .then((db) => db.collection('authors').find().toArray())
+  .then((authors) => {
+    return authors.map(({ _id, firstName, middleName, lastName }) => {
+      return {
+        id: _id,
+        firstName,
+        middleName,
+        lastName
+      }
+    });
+  });
 }
 
 const findById = async (id) => {
@@ -48,7 +37,7 @@ const findById = async (id) => {
 
   const { firstName, middleName, lastName } = authorData;
 
-  return getNewAuthor({
+  return ({
     id,
     firstName,
     middleName,
@@ -56,21 +45,14 @@ const findById = async (id) => {
   })
 }
 
-const isValid = (firstName, middleName, lastName) => {
-  if (!firstName || typeof firstName !== 'string') return false;
-  if (!lastName || typeof lastName !== 'string') return false;
-  if (middleName && typeof middleName !== 'string') return false;
-  return true;
-}
-
-const create = async (firstName, middleName, lastName) => {
-  await connection()
-    .then((db) => db.collection('authors').insertOne({ firstName, middleName, lastName }));
+const create = async (firstName, middleName, lastName) => { // faltava um return 
+  return await connection()
+    .then((db) => db.collection('authors').insertOne({ firstName, middleName, lastName }))
+    .then(result => ({ id: result.insertedId, firstName, middleName, lastName }));
 }
 
 module.exports = {
   getAll,
   findById,
-  isValid,
   create,
 }
