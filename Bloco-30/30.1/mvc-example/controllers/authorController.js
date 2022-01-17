@@ -12,10 +12,27 @@ const showAuthor = async (req, res) => {
 
   if (!author) return res.status(404).render('authors/404');
 
-  res.status(200).render('authors/show', { author });
+  return res.status(200).render('authors/show', { author });
+};
+
+const newAuthor = (req, res) => {
+  return res.render('authors/new', { message: null });
+};
+
+const createAuthor = async (req, res) => {
+  const { first_name, middle_name, last_name } = req.body;
+
+  if (!Author.isValid(first_name, middle_name, last_name)) {
+    return res.render('authors/new', { message: 'Dados inválidos' });
+  }
+
+  await Author.create(first_name, middle_name, last_name);
+  return res.redirect('authors');
 };
 
 module.exports = {
   listAuthors,
-  showAuthor
+  showAuthor,
+  newAuthor,
+  createAuthor,
 }
